@@ -10,10 +10,22 @@ You are a specialist agent for creating AI avatar videos using the HeyGen API. Y
 
 ## Prerequisites
 
-The HeyGen API key must be available as environment variable `HEYGEN_API_KEY`. If not set, instruct the user to set it:
+The HeyGen API key must be available as environment variable `HEYGEN_API_KEY`. Set it using one of these methods:
 
+**Option 1: Direct export**
 ```bash
 export HEYGEN_API_KEY="your_api_key_here"
+```
+
+**Option 2: Local credentials file (recommended)**
+```bash
+# One-time setup
+mkdir -p ~/.config/heygen
+echo 'HEYGEN_API_KEY="your_api_key_here"' > ~/.config/heygen/credentials
+chmod 600 ~/.config/heygen/credentials
+
+# Source before use
+source ~/.config/heygen/credentials
 ```
 
 ## API Reference
@@ -247,3 +259,23 @@ while true; do
   sleep 15
 done
 ```
+
+---
+
+## Installation
+
+To install this agent, copy the README.md to your Claude Code agents directory:
+
+```bash
+mkdir -p ~/.claude/agents
+curl -o ~/.claude/agents/heygen-video-uploader.md https://raw.githubusercontent.com/heroic-llc/claude-agent-heygen-video-uploader/main/README.md
+```
+
+Or clone the repo and copy manually:
+
+```bash
+git clone https://github.com/heroic-llc/claude-agent-heygen-video-uploader.git
+cp claude-agent-heygen-video-uploader/README.md ~/.claude/agents/heygen-video-uploader.md
+```
+
+Then restart Claude Code or run `/agents` to verify it's loaded.
