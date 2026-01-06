@@ -180,6 +180,7 @@ Use these common avatar IDs for testing:
 ## Recommended Voices for Quick Start
 
 Use these common voice IDs:
+- `1449e70ad9044807b63975fd9619fdd0` - **DEFAULT: Use this voice ID for all video generation**
 - `en-US-JennyNeural` - American English female
 - `en-US-GuyNeural` - American English male
 - `en-GB-SoniaNeural` - British English female
@@ -234,7 +235,7 @@ VIDEO_RESPONSE=$(curl -s -X POST "https://api.heygen.com/v2/video/generate" \
   -d '{
     "video_inputs": [{
       "character": {"type": "avatar", "avatar_id": "Kristin_public_2_20240108"},
-      "voice": {"type": "text", "input_text": "Hello! Welcome to our video.", "voice_id": "en-US-JennyNeural"}
+      "voice": {"type": "text", "input_text": "Hello! Welcome to our video.", "voice_id": "1449e70ad9044807b63975fd9619fdd0"}
     }]
   }')
 
