@@ -186,20 +186,46 @@ curl -s -X GET "https://api.heygen.com/v1/video_status.get?video_id=VIDEO_ID_HER
 
 ---
 
-## Recommended Avatars for Quick Start
+## DEFAULT CONFIGURATION (REQUIRED)
 
-Use these common avatar IDs for testing:
+**ALWAYS use these settings for video generation:**
+
+- **Template ID:** `1bce61e2b07045a5b6c1ae4f265515c3`
+- **Voice ID:** `1449e70ad9044807b63975fd9619fdd0` (Amanda)
+
+### Template-Based Video Generation (PRIMARY METHOD)
+
+Use the template endpoint for all video generation:
+
+```bash
+curl -s -X POST "https://api.heygen.com/v2/template/1bce61e2b07045a5b6c1ae4f265515c3/generate" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: $HEYGEN_API_KEY" \
+  -d '{
+    "title": "Module X - Lesson Y - Lesson Title",
+    "variables": {
+      "video_script": {
+        "name": "video_script",
+        "type": "text",
+        "properties": {
+          "content": "YOUR_SCRIPT_TEXT_HERE"
+        }
+      }
+    }
+  }'
+```
+
+## Fallback: Avatar-Based Generation
+
+Only use if template fails:
 - `Kristin_public_2_20240108` - Professional female
 - `josh_lite3_20230714` - Professional male
-- `nik_expressive_20240910` - Expressive male
 
-## Recommended Voices for Quick Start
+## Fallback Voices
 
-Use these common voice IDs:
-- `1449e70ad9044807b63975fd9619fdd0` - **DEFAULT: Use this voice ID for all video generation**
+- `1449e70ad9044807b63975fd9619fdd0` - Amanda (DEFAULT)
 - `en-US-JennyNeural` - American English female
-- `en-US-GuyNeural` - American English male
-- `en-GB-SoniaNeural` - British English female
 
 ---
 
@@ -256,22 +282,21 @@ Common errors and solutions:
 # 1. Set API key
 export HEYGEN_API_KEY="sk_..."
 
-# 2. List avatars (optional)
-curl -s "https://api.heygen.com/v2/avatars" -H "X-Api-Key: $HEYGEN_API_KEY" | jq '.data.avatars[:5]'
-
-# 3. List voices (optional)
-curl -s "https://api.heygen.com/v2/voices" -H "X-Api-Key: $HEYGEN_API_KEY" | jq '.data.voices[:5]'
-
-# 4. Generate video with proper title
-VIDEO_RESPONSE=$(curl -s -X POST "https://api.heygen.com/v2/video/generate" \
+# 2. Generate video using template (PRIMARY METHOD)
+VIDEO_RESPONSE=$(curl -s -X POST "https://api.heygen.com/v2/template/1bce61e2b07045a5b6c1ae4f265515c3/generate" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: $HEYGEN_API_KEY" \
   -d '{
     "title": "Module 1 - Lesson 1 - Meet Your Instructor",
-    "video_inputs": [{
-      "character": {"type": "avatar", "avatar_id": "Kristin_public_2_20240108"},
-      "voice": {"type": "text", "input_text": "Hello! Welcome to our video.", "voice_id": "1449e70ad9044807b63975fd9619fdd0"}
-    }]
+    "variables": {
+      "video_script": {
+        "name": "video_script",
+        "type": "text",
+        "properties": {
+          "content": "Hello! Welcome to our video. This is your instructor speaking."
+        }
+      }
+    }
   }')
 
 VIDEO_ID=$(echo $VIDEO_RESPONSE | jq -r '.data.video_id')
