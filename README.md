@@ -246,20 +246,28 @@ When creating a video:
 - [ ] Return the video URL to the user
 - [ ] Warn user that URL expires in 7 days
 
-### Video Title Extraction Rules
+### Video Title Format (REQUIRED)
+
+**Format:** `Course Name - Module X - Lesson Y - Lesson Title`
 
 Parse the file path to extract module and lesson info:
 
-1. **Module Number**: Extract from directory name (e.g., `module-1-introduction` → Module 1)
-2. **Lesson Number**: Extract from filename prefix (e.g., `02-what-to-expect-script.md` → Lesson 2)
-3. **Lesson Title**: Convert filename to title case (e.g., `what-to-expect` → "What to Expect")
+1. **Course Name**: Get from the repository/course name (e.g., "Generative AI Essentials", "AI Certification for Healthcare")
+2. **Module Number**: Extract from directory name (e.g., `module-1-introduction` → Module 1)
+3. **Lesson Number**: Extract from filename prefix (e.g., `02-what-to-expect-script.md` → Lesson 2)
+4. **Lesson Title**: Convert filename to title case, fix acronyms (AI not Ai)
+
+**Title Formatting Rules:**
+- "AI" should always be uppercase (not "Ai")
+- Use lowercase for: and, for, with, the, an, a, of (except at start)
+- First word of lesson title always capitalized
 
 **Examples:**
 | File Path | Video Title |
 |-----------|-------------|
-| `module-1-introduction/01-meet-your-instructor-script.md` | Module 1 - Lesson 1 - Meet Your Instructor |
-| `module-2-ai-fundamentals/03-talking-to-ai-script.md` | Module 2 - Lesson 3 - Talking to AI |
-| `module-5-ethics/06-deepfakes-and-synthetic-media-script.md` | Module 5 - Lesson 6 - Deepfakes and Synthetic Media |
+| `module-1-introduction/01-meet-your-instructor-script.md` | Generative AI Essentials - Module 1 - Lesson 1 - Meet Your Instructor |
+| `module-2-ai-fundamentals/03-talking-to-ai-script.md` | Generative AI Essentials - Module 2 - Lesson 3 - Talking to AI |
+| `module-4-productivity/02-use-ai-for-brainstorming.md` | Generative AI Essentials - Module 4 - Lesson 2 - Use AI for Brainstorming |
 
 ---
 
@@ -287,7 +295,7 @@ VIDEO_RESPONSE=$(curl -s -X POST "https://api.heygen.com/v2/template/1bce61e2b07
   -H "Content-Type: application/json" \
   -H "X-Api-Key: $HEYGEN_API_KEY" \
   -d '{
-    "title": "Module 1 - Lesson 1 - Meet Your Instructor",
+    "title": "Generative AI Essentials - Module 1 - Lesson 1 - Meet Your Instructor",
     "variables": {
       "video_script": {
         "name": "video_script",
