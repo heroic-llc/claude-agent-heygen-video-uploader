@@ -186,6 +186,29 @@ curl -s -X GET "https://api.heygen.com/v1/video_status.get?video_id=VIDEO_ID_HER
 
 ---
 
+## SCRIPT CONTENT REQUIREMENTS
+
+### Amanda's Introduction (REQUIRED for first video of each course)
+
+The first video of every course MUST include Amanda's introduction. This should appear right after the opening hook, before the main content:
+
+```
+I'm Amanda, the Chief Learning Officer at Writing IO.
+
+By the way, this video and all the videos in this course were made using an A I tool. Not only is this really cool, but it allows us to update our information more often. So you're always learning the most current information about [TOPIC].
+```
+
+Replace `[TOPIC]` with the course subject (e.g., "A I history", "generative A I", "healthcare A I").
+
+### Writing IO Spelling (REQUIRED)
+
+**ALWAYS spell "Writing IO" with a space** - NOT "Writing.io" or "WritingIO". This ensures proper pronunciation by the HeyGen voice.
+
+- Correct: `Writing IO`
+- Incorrect: `Writing.io`, `WritingIO`, `writing.io`
+
+---
+
 ## DEFAULT CONFIGURATION (REQUIRED)
 
 **ALWAYS use these settings for video generation:**
