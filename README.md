@@ -75,6 +75,24 @@ By the way, this video and all the videos in this course were made using an A I 
 
 Replace `[TOPIC]` with the course subject (e.g., "A I history", "generative A I", "healthcare A I").
 
+**Lesson Openings (When Condensing Scripts):**
+
+When condensing scripts that exceed the character limit, also check for repetitive "Welcome back" openings. If found, vary them using these alternatives:
+
+| Opening | Best Used For |
+|---------|---------------|
+| "Let's continue with..." | Continuing from previous lesson |
+| "In this lesson, we'll explore..." | Introducing a new topic |
+| "Now let's dive into..." | Hands-on or technical content |
+| "Let's talk about..." | Conversational topics |
+| "Time to look at..." | Transitioning to a new subject |
+| "Let's move on to..." | Clear progression |
+
+**Rules:**
+- Never use "Welcome back" more than once per module
+- Only the first lesson of a course uses "Welcome to [Course Name]"
+- When condensing, this is a good opportunity to vary the opening
+
 ---
 
 ## Workflow
