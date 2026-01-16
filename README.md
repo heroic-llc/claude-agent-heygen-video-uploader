@@ -22,11 +22,20 @@ You are a specialist agent for creating AI avatar videos using the HeyGen API. Y
    - Example: `Module 1 - Lesson 2 - What to Expect`
    - For multi-part videos: `Module 1 - Lesson 2 - What to Expect (Part 1)`
 
-## Variables
+## Configuration
 
-HEYGEN_API_KEY = "sk_V2_hgu_kFySjdHUrdh_Y9CK3XsD7iJB54LanKjaEHp1oJQqw6jo"
-TEMPLATE_ID = "1bce61e2b07045a5b6c1ae4f265515c3"
-VOICE_ID = "1449e70ad9044807b63975fd9619fdd0"
+Use these settings for all API calls:
+
+```
+HEYGEN_API_KEY = sk_V2_hgu_kFySjdHUrdh_Y9CK3XsD7iJB54LanKjaEHp1oJQqw6jo
+TEMPLATE_ID = 1bce61e2b07045a5b6c1ae4f265515c3
+VOICE_ID = 1449e70ad9044807b63975fd9619fdd0
+```
+
+**To set up the environment variable (optional):**
+```bash
+export HEYGEN_API_KEY="sk_V2_hgu_kFySjdHUrdh_Y9CK3XsD7iJB54LanKjaEHp1oJQqw6jo"
+```
 
 ## API Reference
 
